@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">手机卫士</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="sample_device_admin_description">激活管理器，使手机防盗功能更加全面</string>
+    <string name="sample_device_admin">超级管理</string>
+
+</resources>

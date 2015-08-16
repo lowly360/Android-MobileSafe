@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    
+    <ImageView 
+        android:id="@+id/iv_icon"
+        android:layout_marginLeft="5dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_launcher"
+        />
+
+    <TextView
+        android:id="@+id/tv_apkname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_isrom"
+       android:layout_marginRight="60dp"
+        android:layout_toRightOf="@+id/iv_icon"
+        android:text="应用程序名字"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_isrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_icon"
+        android:layout_alignLeft="@+id/tv_apkname"
+        android:layout_toEndOf="@id/tv_apkname"
+        android:text="手机内存" />
+    
+    <TextView
+       	
+        android:layout_marginRight="10dp" 
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="卸载"
+        android:padding="5dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="18sp"
+        android:background="@drawable/buttion_shape"
+        android:layout_alignParentRight="true"
+        />
+    
+    <ImageView 
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#a000"
+        android:layout_below="@id/tv_isrom"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        />
+    
+    <TextView 
+        android:id="@+id/tv_appsize"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="应用大小"
+        android:layout_toLeftOf="@id/btn_delete"
+        android:layout_alignBottom="@id/tv_isrom"
+        />
+    
+
+</RelativeLayout>

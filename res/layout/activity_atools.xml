@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView 
+        style="@style/TitleStyle"
+        android:text="高级工具"
+        />
+    
+    <TextView 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+        android:text="电话归属地查询"
+        android:background="@drawable/btn_green_normal"
+        android:drawableLeft="@android:drawable/ic_menu_camera"
+        android:padding="10dp"
+        android:drawablePadding="5dp"
+        android:textSize="22sp"
+        android:gravity="center_vertical"
+        android:onClick="numberAdressQuery"
+        android:clickable="true"
+        
+        />    
+        
+    <TextView 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+        android:text="备份短信"
+        android:background="@drawable/btn_green_normal"
+        android:drawableLeft="@android:drawable/ic_dialog_email"
+        android:padding="10dp"
+        android:drawablePadding="5dp"
+        android:textSize="22sp"
+        android:gravity="center_vertical"
+        android:onClick="BackUpSms"
+        android:clickable="true"
+        
+        />    
+
+</LinearLayout>
