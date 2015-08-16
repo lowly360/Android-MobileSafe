@@ -316,6 +316,8 @@ public class ProcessMangerActivity extends Activity {
 				availMen += info.getSize();
 			}
 		}
+		
+
 
 		for (ProcessInfo info : sysprocessInfos) {
 			if (info.isIscheck()) {
