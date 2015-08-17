@@ -37,6 +37,21 @@
         android:onClick="BackUpSms"
         android:clickable="true"
         
-        />    
+        />  
+        
+    <TextView 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+        android:text="程序锁"
+        android:background="@drawable/btn_green_normal"
+        android:drawableLeft="@android:drawable/ic_lock_idle_lock"
+        android:padding="10dp"
+        android:drawablePadding="5dp"
+        android:textSize="22sp"
+        android:gravity="center_vertical"
+        android:onClick="AppLock"
+        android:clickable="true"
+        
+        /> 
 
 </LinearLayout>

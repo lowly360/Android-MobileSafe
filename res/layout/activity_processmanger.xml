@@ -70,6 +70,7 @@
             android:text="清理" />
 
         <Button
+            android:onClick="SettingProcess"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

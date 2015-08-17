@@ -62,6 +62,10 @@
         <activity android:name=".activity.AdressQueryActivity" />
         <activity android:name=".activity.ProcessMangerActivity" />
         <activity android:name=".activity.AppMangerActivity" />
+        <activity android:name=".activity.ProcessMangerSetting" />
+        <activity android:name=".activity.AppLockActivity" />
+        
+        
         <activity
             android:name=".activity.DragViewActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
@@ -94,6 +98,7 @@
         <service android:name=".service.LocationService" />
         <service android:name=".service.AddressService" />
         <service android:name=".service.CallSafeService" />
+         <service android:name=".service.KillProcessService" />
     </application>
 
 </manifest>

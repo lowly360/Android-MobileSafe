@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        style="@style/TitleStyle"
+        android:text="进程管理设置" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        >
+        
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:id="@+id/cb_ProcessSetting"
+            android:layout_marginLeft="5dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="显示系统进程" 
+            android:textSize="20sp"/>
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        >
+        
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:id="@+id/cb_ProcessSetting_kill"
+            android:layout_marginLeft="5dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="锁屏后清理进程" 
+            android:textSize="20sp"/>
+
+        
+    </LinearLayout>
+    
+    
+
+</LinearLayout>

@@ -10,7 +10,10 @@ import com.example.mobilesafe.logic.GetProcessInfo;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
+import android.R.integer;
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -51,13 +54,30 @@ public class ProcessMangerActivity extends Activity {
 		initData();
 
 	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		
+		mPre = getSharedPreferences("config", MODE_PRIVATE);
+
+		isshowsys = mPre.getBoolean("showsys", false);
+		if (myadapter!=null) {
+			myadapter.notifyDataSetChanged();
+		}
+	}
 
 	private void initUI() {
 		setContentView(R.layout.activity_processmanger);
 		ViewUtils.inject(this);
-		long avilmem = GetProcessInfo.GetFreeMemory(this);
-		tv_processsum.setText("进程数: " + GetProcessInfo.GetProessNumber(this)
-				+ " 个");
+
+		mPre = getSharedPreferences("config", MODE_PRIVATE);
+
+		isshowsys = mPre.getBoolean("showsys", false);
+
+		avilmem = GetProcessInfo.GetFreeMemory(this);
+		processnumber = GetProcessInfo.GetProessNumber(this);
+		tv_processsum.setText("进程数: " + processnumber + " 个");
 		tv_memoryinfo.setText("内存信息: "
 				+ Formatter.formatFileSize(this, avilmem) + "/"
 				+ Formatter.formatFileSize(this, toalmem));
@@ -111,6 +131,10 @@ public class ProcessMangerActivity extends Activity {
 			lv_process.setAdapter(myadapter);
 		};
 	};
+	private long avilmem;
+	private int processnumber;
+	private SharedPreferences mPre;
+	private boolean isshowsys;
 
 	private void initData() {
 		processInfos = new ArrayList<ProcessInfo>();
@@ -139,7 +163,15 @@ public class ProcessMangerActivity extends Activity {
 
 		@Override
 		public int getCount() {
-			return userprocessInfos.size() + sysprocessInfos.size() + 2;
+			/**
+			 * 判断是否设置显示系统进程
+			 */
+			if (isshowsys) {
+				return userprocessInfos.size() + sysprocessInfos.size() + 2;
+			} else {
+				return userprocessInfos.size() + 1;
+			}
+
 		}
 
 		@Override
@@ -309,20 +341,18 @@ public class ProcessMangerActivity extends Activity {
 
 	public void killProcess(View v) {
 		List<ProcessInfo> kill_list = new ArrayList<ProcessInfo>();
-		int availMen = 0;
+		int nowavailMen = 0;
 		for (ProcessInfo info : userprocessInfos) {
 			if (info.isIscheck()) {
 				kill_list.add(info);
-				availMen += info.getSize();
+				nowavailMen += info.getSize();
 			}
 		}
-		
-
 
 		for (ProcessInfo info : sysprocessInfos) {
 			if (info.isIscheck()) {
 				kill_list.add(info);
-				availMen += info.getSize();
+				nowavailMen += info.getSize();
 			}
 		}
 
@@ -340,9 +370,20 @@ public class ProcessMangerActivity extends Activity {
 				ProcessMangerActivity.this,
 				"共清理:"
 						+ Formatter.formatFileSize(ProcessMangerActivity.this,
-								availMen), Toast.LENGTH_SHORT).show();
+								nowavailMen), Toast.LENGTH_SHORT).show();
+		processnumber -= kill_list.size();
+		tv_processsum.setText("进程数: " + processnumber + " 个");
+		avilmem += nowavailMen;
+
+		tv_memoryinfo.setText("内存信息: "
+				+ Formatter.formatFileSize(this, avilmem) + "/"
+				+ Formatter.formatFileSize(this, toalmem));
 
 		myadapter.notifyDataSetChanged();
+	}
+
+	public void SettingProcess(View v) {
+		startActivity(new Intent(this,ProcessMangerSetting.class));
 	}
 
 }
