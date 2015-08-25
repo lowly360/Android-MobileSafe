@@ -26,8 +26,12 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.WRITE_SMS" />
-    <uses-permission android:name="android.permission.GET_TASKS"/>
-    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>
+    
 
     <application
         android:allowBackup="true"
@@ -64,8 +68,15 @@
         <activity android:name=".activity.AppMangerActivity" />
         <activity android:name=".activity.ProcessMangerSetting" />
         <activity android:name=".activity.AppLockActivity" />
+        <activity android:name=".activity.AntivirusActivity" />
+        <activity android:name=".activity.CleanCacheActivity" />
+        <activity android:name=".activity.TrafficManager" />
         
         
+        <activity
+            android:name=".activity.EnterPwdActivity"
+            android:launchMode="singleInstance" >
+        </activity>
         <activity
             android:name=".activity.DragViewActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
@@ -95,10 +106,11 @@
             </intent-filter>
         </receiver>
 
+        <service android:name=".service.WatchDogService" />
         <service android:name=".service.LocationService" />
         <service android:name=".service.AddressService" />
         <service android:name=".service.CallSafeService" />
-         <service android:name=".service.KillProcessService" />
+        <service android:name=".service.KillProcessService" />
     </application>
 
 </manifest>

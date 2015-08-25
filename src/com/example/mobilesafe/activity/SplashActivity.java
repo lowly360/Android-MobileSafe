@@ -124,6 +124,8 @@ public class SplashActivity extends Activity {
 		rlRoot.startAnimation(anim);
 		
 		CopyDB("address.db");
+		//把病毒数据库拷贝到files文件夹中
+		CopyDB("antivirus.db");
         
         //判定是否需要更新
         boolean autoUpdate = mPref.getBoolean("auto_update", true);

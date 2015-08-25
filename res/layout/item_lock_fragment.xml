@@ -8,12 +8,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="未加锁的软件"
-        android:id="@+id/tv_unlockApp"
+        android:id="@+id/tv_lockApp"
         android:gravity="center_vertical"
         />
     
     <ListView
-        android:id="@+id/lv_unlock"
+        android:id="@+id/lv_lock"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </ListView>

@@ -1,7 +1,16 @@
 package com.example.mobilesafe.utils;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import android.R.integer;
+import android.R.string;
+import android.app.ActivityManager;
+import android.content.Context;
+import android.os.Environment;
 
 public class Md5Uils {
 	/**
@@ -13,7 +22,7 @@ public class Md5Uils {
 			MessageDigest instance = MessageDigest.getInstance("MD5");
 			byte[] digest = instance.digest(password.getBytes());
 			
-			 StringBuffer sb = new StringBuffer();
+			StringBuffer sb = new StringBuffer();
 			
 			for(byte b : digest){
 				int i = b & 0xff;
@@ -33,9 +42,38 @@ public class Md5Uils {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 		return " ";
-		
+	}
+	
+	/**
+	 * 获取文件的md5 病毒特征码
+	 * @param filePath 文件路径名
+	 * @return
+	 */
+	public static String GetFileMd5(String filePath){
+		File file = new File(filePath);
+		try {
+			FileInputStream fis = new FileInputStream(file);
+			byte[] buffer = new byte[1024];
+			int len = -1;
+			MessageDigest digest = MessageDigest.getInstance("md5");
+			while ((len = fis.read(buffer))!=-1) {
+				digest.update(buffer, 0, len);
+			}
+			byte[] result = digest.digest();
+			StringBuffer sb = new StringBuffer();
+			for(byte b : result){
+				int i = b & 0xff;
+				String hexString = Integer.toHexString(i);
+				if(hexString.length()<2){
+					hexString = "0"+hexString;
+				}
+				sb.append(hexString);
+			}
+			return sb.toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
 	}
 }

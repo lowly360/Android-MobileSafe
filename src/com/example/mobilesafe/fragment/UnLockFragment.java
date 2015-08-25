@@ -126,16 +126,12 @@ public class UnLockFragment extends Fragment {
 							Animation.RELATIVE_TO_SELF, 1.0f,
 							Animation.RELATIVE_TO_SELF, 0,
 							Animation.RELATIVE_TO_SELF, 0);
-					animation.setDuration(2000);
+					animation.setDuration(500);
 					view.startAnimation(animation);
-					
 					new Thread(){
-						
 						public void run() {
-							SystemClock.sleep(2000);
-							
+							SystemClock.sleep(500);
 							getActivity().runOnUiThread(new Runnable() {
-								
 								@Override
 								public void run() {
 									appLockDao.add(appInfo.getApkPackName());
@@ -143,13 +139,10 @@ public class UnLockFragment extends Fragment {
 									unLockAdapter.notifyDataSetChanged();									
 								}
 							});
-							
 						};
-						
 					}.start();			
 				}
 			});
-
 			return view;
 		}
 

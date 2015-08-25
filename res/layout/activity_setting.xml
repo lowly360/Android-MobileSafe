@@ -29,6 +29,14 @@
             itheima:desc_off="设备管理未激活"
             itheima:desc_on="设备管理已激活"
             itheima:title="激活设备管理器" />
+        
+        <com.example.mobilesafe.view.SettingItemView
+            android:id="@+id/siv_watch_dog"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"        
+            itheima:desc_off="程序锁未开启"
+            itheima:desc_on="程序锁已开启"
+            itheima:title="程序锁功能" />
 
         <com.example.mobilesafe.view.SettingItemView
             android:id="@+id/siv_address"

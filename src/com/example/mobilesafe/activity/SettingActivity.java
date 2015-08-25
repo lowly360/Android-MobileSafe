@@ -18,6 +18,7 @@ import com.example.mobilesafe.db.dao.AddressDao;
 import com.example.mobilesafe.receiver.AdminReceiver;
 import com.example.mobilesafe.service.AddressService;
 import com.example.mobilesafe.service.CallSafeService;
+import com.example.mobilesafe.service.WatchDogService;
 import com.example.mobilesafe.utils.ServiceStatusUtils;
 import com.example.mobilesafe.utils.ToastUtils;
 import com.example.mobilesafe.view.SettingClickView;
@@ -35,6 +36,7 @@ public class SettingActivity extends Activity {
 	private SettingItemView sivCallSafeActive;
 	private SettingClickView scvAddressStyle;
 	private SettingClickView scvLocation;
+	private SettingItemView siv_watch_dog;
 	
 	private SettingItemView sivAddress;
 	private SharedPreferences mPref;
@@ -55,7 +57,51 @@ public class SettingActivity extends Activity {
 		initAddressStyle();
 		initAddressLocation();
 		initCallSafeView();
+		initActiveWatchDog();
+		
+		
 	}
+	/**
+	 * 初始化看门狗
+	 */
+	private void initActiveWatchDog() {
+		siv_watch_dog = (SettingItemView) findViewById(R.id.siv_watch_dog);
+
+		
+
+//		if (admin) {
+//			sivActiveAdmin.setChecked(true);
+//		} else {
+//			sivActiveAdmin.setChecked(false);
+//		}
+		
+		boolean serviceRuning = ServiceStatusUtils.isServiceRuning(this,
+				"com.example.mobilesafe.service.WatchDogService"); // 判断服务是否在运行中
+
+		if (serviceRuning) {
+			siv_watch_dog.setChecked(true);
+		} else {
+			siv_watch_dog.setChecked(false);
+		}
+
+		siv_watch_dog.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (siv_watch_dog.isChecked()) {
+					siv_watch_dog.setChecked(false);
+					stopService(new Intent(SettingActivity.this,
+							WatchDogService.class));
+				} else {
+					siv_watch_dog.setChecked(true);
+					startService(new Intent(SettingActivity.this,
+							WatchDogService.class));
+				}
+			}
+		});
+		
+	}
+
 
 	public void Active(View v) {
 		if (admin == false) {
@@ -241,6 +287,7 @@ public class SettingActivity extends Activity {
 			}
 		});
 	}
+		
 	
 	private void initCallSafeView() {
 		sivCallSafeActive = (SettingItemView) findViewById(R.id.siv_callsafe);

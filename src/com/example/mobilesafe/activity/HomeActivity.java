@@ -35,6 +35,7 @@ public class HomeActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+	
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
@@ -54,35 +55,52 @@ public class HomeActivity extends Activity {
 					showPasswordDialog();
 					break;
 				case 1:
-					//通讯卫士
+					// 通讯卫士
 					startActivity(new Intent(HomeActivity.this,
 							CallSafeActivity.class));
 					break;
-					
+
 				case 2:
-					//应用管理
+					// 应用管理
 					startActivity(new Intent(HomeActivity.this,
 							AppMangerActivity.class));
 					break;
-					
+
 				case 3:
-					//进程管理
+					// 进程管理
 					startActivity(new Intent(HomeActivity.this,
 							ProcessMangerActivity.class));
 					break;
-				
+					
+				case 4:
+					// 流量管理
+					startActivity(new Intent(HomeActivity.this,
+							TrafficManager.class));
+					break;
+
+				case 5:
+					// 手机杀毒
+					startActivity(new Intent(HomeActivity.this,
+							AntivirusActivity.class));
+					break;
+
+				case 6:
+					// 缓存清理
+					startActivity(new Intent(HomeActivity.this,
+							CleanCacheActivity.class));
+					break;
+
 				case 7:
 					// 高级工具
 					startActivity(new Intent(HomeActivity.this,
 							AToolsActivity.class));
 					break;
-				
+
 				case 8:
 					// 设置中心
 					startActivity(new Intent(HomeActivity.this,
 							SettingActivity.class));
 					break;
-				
 
 				default:
 					break;

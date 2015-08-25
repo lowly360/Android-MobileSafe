@@ -13,7 +13,7 @@
          
          <TextView 
         style="@style/TitleStyle"
-        android:text="高级工具"
+        android:text="通讯卫士"
         android:gravity="center"
         />
          
